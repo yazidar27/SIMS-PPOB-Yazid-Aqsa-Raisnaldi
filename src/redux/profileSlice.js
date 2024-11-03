@@ -7,9 +7,22 @@ export const fetchUserProfile = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.get(`${API_BASE_URL}/profile`);
-      return response.data; // Kembalikan data profil
+      return response.data;
     } catch (error) {
-      return rejectWithValue(error.response.data.message); // Kembalikan pesan error
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
+// Add the updateProfile action
+export const updateProfile = createAsyncThunk(
+  'profile/updateProfile',
+  async (profileData, { rejectWithValue }) => {
+    try {
+      const response = await axiosInstance.put(`${API_BASE_URL}/profile`, profileData);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -20,9 +33,9 @@ export const fetchUserBalance = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.get(`${API_BASE_URL}/balance`);
-      return response.data; // Kembalikan data saldo
+      return response.data;
     } catch (error) {
-      return rejectWithValue(error.response.data.message); // Kembalikan pesan error
+      return rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -33,9 +46,9 @@ export const fetchServices = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.get(`${API_BASE_URL}/services`);
-      return response.data; // Kembalikan data layanan
+      return response.data;
     } catch (error) {
-      return rejectWithValue(error.response.data.message); // Kembalikan pesan error
+      return rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -46,9 +59,9 @@ export const fetchBanners = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.get(`${API_BASE_URL}/banner`);
-      return response.data; // Kembalikan data banner
+      return response.data;
     } catch (error) {
-      return rejectWithValue(error.response.data.message); // Kembalikan pesan error
+      return rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -71,46 +84,59 @@ const profileSlice = createSlice({
       })
       .addCase(fetchUserProfile.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload; // Simpan data pengguna
+        state.user = action.payload;
       })
       .addCase(fetchUserProfile.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload; // Simpan error
+        state.error = action.payload;
+      })
+      .addCase(updateProfile.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(updateProfile.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action.payload;
+      })
+      .addCase(updateProfile.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       })
       .addCase(fetchUserBalance.pending, (state) => {
         state.loading = true;
       })
       .addCase(fetchUserBalance.fulfilled, (state, action) => {
         state.loading = false;
-        state.balance = action.payload; // Simpan data saldo
+        state.balance = action.payload;
       })
       .addCase(fetchUserBalance.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload; // Simpan error
+        state.error = action.payload;
       })
       .addCase(fetchServices.pending, (state) => {
         state.loading = true;
       })
       .addCase(fetchServices.fulfilled, (state, action) => {
         state.loading = false;
-        state.services = action.payload; // Simpan data layanan
+        state.services = action.payload;
       })
       .addCase(fetchServices.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload; // Simpan error
+        state.error = action.payload;
       })
       .addCase(fetchBanners.pending, (state) => {
         state.loading = true;
       })
       .addCase(fetchBanners.fulfilled, (state, action) => {
         state.loading = false;
-        state.banners = action.payload; // Simpan data banner
+        state.banners = action.payload;
       })
       .addCase(fetchBanners.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload; // Simpan error
+        state.error = action.payload;
       });
   },
 });
 
+// Export all actions and reducer
+// export { fetchUserProfile, updateProfile, fetchUserBalance, fetchServices, fetchBanners };
 export default profileSlice.reducer;

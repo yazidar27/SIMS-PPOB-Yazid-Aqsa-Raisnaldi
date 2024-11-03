@@ -1,7 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // import Login from './components/Login';
 // import Register from './components/Register';
-import Home from './pages/Home';
+// import Home from './pages/Home';
+import Profile from './pages/Profile';
 // import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
@@ -16,9 +17,11 @@ function App() {
             // <ProtectedRoute>
             //   <Home />
             // </ProtectedRoute>
-            <Home />
+            <Profile />
           }
+          
         />
+        {/* <Route path="/profile" element={<Profile />} /> */}
       </Routes>
     </Router>
   );

@@ -17,7 +17,7 @@ export const loginUser = createAsyncThunk(
   'auth/loginUser',
   async ({ email, password }, { rejectWithValue }) => {
     try {
-      const response = await axiosInstance.post('https://api-doc-tht.nutech-integrasi.com//login', { email, password });
+      const response = await axiosInstance.post('https://api-doc-tht.nutech-integrasi.com/login', { email, password });
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || 'Login failed');
