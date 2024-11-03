@@ -1,4 +1,3 @@
-// src/redux/profileSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axiosInstance, { API_BASE_URL } from '../axiosInstance';
 

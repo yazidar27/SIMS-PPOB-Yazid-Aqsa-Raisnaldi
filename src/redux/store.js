@@ -1,16 +1,15 @@
-// src/redux/store.js
 import { configureStore } from '@reduxjs/toolkit';
-import authReducer from './authSlice'; // Import reducer from authSlice
-import profileReducer from './profileSlice'; // Import reducer from profileSlice
-import transactionReducer from './transactionSlice'; // Import reducer from transactionSlice
+import authReducer from './authSlice';
+import profileReducer from './profileSlice';
+import transactionReducer from './transactionSlice';
 
 // Configure store
 const store = configureStore({
   reducer: {
-    auth: authReducer, // Add reducer for authentication
-    profile: profileReducer, // Add reducer for profile
-    transaction: transactionReducer, // Add reducer for transactions
+    auth: authReducer,
+    profile: profileReducer,
+    transaction: transactionReducer,
   },
 });
 
-export default store; // Export store
+export default store;

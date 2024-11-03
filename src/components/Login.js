@@ -1,4 +1,3 @@
-// src/pages/Login.js
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../redux/authSlice';
@@ -15,9 +14,9 @@ const Login = () => {
     e.preventDefault();
     try {
       await dispatch(loginUser({ email, password })).unwrap();
-      navigate('/'); // Arahkan ke homepage setelah login berhasil
+      navigate('/home');
     } catch (err) {
-      setError(err.message); // Menyimpan pesan error jika login gagal
+      setError(err);
     }
   };
 

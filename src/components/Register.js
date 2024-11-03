@@ -1,4 +1,3 @@
-// src/pages/Register.js
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../redux/authSlice';
@@ -23,9 +22,9 @@ const Register = () => {
     }
     try {
       await dispatch(registerUser({ email, firstName, lastName, password })).unwrap();
-      navigate('/'); // Navigate to homepage after successful registration
+      navigate('/login');
     } catch (err) {
-      setError(err.message); // Display error message on registration failure
+      setError(err);
     }
   };
 

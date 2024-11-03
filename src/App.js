@@ -1,29 +1,27 @@
-// src/App.js
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// import Login from './components/Login';
+// import Register from './components/Register';
 import Home from './pages/Home';
-import Register from './components/Register';
-import Login from './components/Login';
-import ProtectedRoute from './components/ProtectedRoute';
+// import ProtectedRoute from './components/ProtectedRoute';
 
-const App = () => {
+function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        {/* <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} /> */}
         <Route
           path="/"
           element={
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
+            // <ProtectedRoute>
+            //   <Home />
+            // </ProtectedRoute>
+            <Home />
           }
         />
-        {/* Tambahkan rute lainnya jika diperlukan */}
       </Routes>
     </Router>
   );
-};
+}
 
 export default App;
