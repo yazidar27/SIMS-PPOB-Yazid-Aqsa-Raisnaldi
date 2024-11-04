@@ -3,7 +3,6 @@ import authReducer from './authSlice';
 import profileReducer from './profileSlice';
 import transactionReducer from './transactionSlice';
 
-// Configure store
 const store = configureStore({
   reducer: {
     auth: authReducer,

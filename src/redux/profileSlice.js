@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axiosInstance, { API_BASE_URL } from '../axiosInstance';
 
-// Action untuk mengambil profil pengguna
 export const fetchUserProfile = createAsyncThunk(
   'profile/fetchUserProfile',
   async (_, { rejectWithValue }) => {
@@ -14,7 +13,6 @@ export const fetchUserProfile = createAsyncThunk(
   }
 );
 
-// Add the updateProfile action
 export const updateProfile = createAsyncThunk(
   'profile/updateProfile',
   async (profileData, { rejectWithValue }) => {
@@ -27,7 +25,6 @@ export const updateProfile = createAsyncThunk(
   }
 );
 
-// Action untuk mengambil saldo pengguna
 export const fetchUserBalance = createAsyncThunk(
   'profile/fetchUserBalance',
   async (_, { rejectWithValue }) => {
@@ -40,7 +37,6 @@ export const fetchUserBalance = createAsyncThunk(
   }
 );
 
-// Action untuk mengambil daftar layanan
 export const fetchServices = createAsyncThunk(
   'profile/fetchServices',
   async (_, { rejectWithValue }) => {
@@ -52,8 +48,6 @@ export const fetchServices = createAsyncThunk(
     }
   }
 );
-
-// Action untuk mengambil banner
 export const fetchBanners = createAsyncThunk(
   'profile/fetchBanners',
   async (_, { rejectWithValue }) => {
@@ -137,6 +131,5 @@ const profileSlice = createSlice({
   },
 });
 
-// Export all actions and reducer
 // export { fetchUserProfile, updateProfile, fetchUserBalance, fetchServices, fetchBanners };
 export default profileSlice.reducer;

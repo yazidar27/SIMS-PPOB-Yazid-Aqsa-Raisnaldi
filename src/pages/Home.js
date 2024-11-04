@@ -3,7 +3,6 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-// Promo data (can be fetched from API in a real application)
 const promos = [
   { 
     id: 1, 

@@ -1,12 +1,11 @@
-// src/components/Profile.js
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate instead of useHistory
+import { useNavigate } from 'react-router-dom';
 import { updateProfile, fetchUserProfile } from '../redux/profileSlice';
 
 const Profile = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate(); // Create navigate instance
+  const navigate = useNavigate();
   const { user, loading, error } = useSelector((state) => state.profile);
 
   const [form, setForm] = useState({
@@ -16,12 +15,10 @@ const Profile = () => {
   });
 
   useEffect(() => {
-    // Fetch user profile data on component mount
     dispatch(fetchUserProfile());
   }, [dispatch]);
 
   useEffect(() => {
-    // Update form state when user data changes
     if (user) {
       setForm({
         email: user.email || '',
@@ -41,12 +38,10 @@ const Profile = () => {
     dispatch(updateProfile(form));
   };
 
-  // Function to handle back navigation
   const handleBack = () => {
-    navigate('/home'); // Navigate to home page
+    navigate('/home');
   };
 
-  // Render loading and error messages
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -74,7 +69,7 @@ const Profile = () => {
             value={form.email}
             onChange={handleChange}
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
-            required // Add required validation
+            required
           />
         </div>
         <div>
@@ -85,7 +80,7 @@ const Profile = () => {
             value={form.firstName}
             onChange={handleChange}
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
-            required // Add required validation
+            required
           />
         </div>
         <div>
@@ -96,7 +91,7 @@ const Profile = () => {
             value={form.lastName}
             onChange={handleChange}
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
-            required // Add required validation
+            required
           />
         </div>
         <button
@@ -108,7 +103,7 @@ const Profile = () => {
       </form>
       <button
         className="w-full py-2 mt-4 text-red-500 border border-red-500 rounded-md"
-        onClick={handleBack} // Attach back navigation
+        onClick={handleBack}
       >
         Kembali ke Home
       </button>
